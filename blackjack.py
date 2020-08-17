@@ -184,3 +184,46 @@ def get_card_value(cards):
             value += 10
 
     return value
+
+def display_cards(cards):
+    '''display all the cards in the cards list'''
+    rows = ['','','','','']
+
+    for i, card in enumerate(cards):
+        rows[0] += ' ___ '
+        if card == BACKSIDE:
+            rows[1] += '|## |'
+            rows[2] += '|###|'
+            rows[3] += '| ##|'
+        else:
+            rank, suit = card
+            rows[1] += f'|{rank.ljust(2)} | '
+            rows[2] += f'| {suit} | '
+            rows[3] += '|_{}| '.format(rank.ljust(2, '_'))
+
+    for row in rows:
+        print(row)
+
+def get_move(player_hand, money):
+    '''asks the player for their move, and returns 'H' for hit, 'S' for
+    stand, and 'D' for double down'''
+    while True:
+        moves = ['(H)it', '(S)tand']
+
+        if len(player_hand) == 2 and money > 0:
+            moves.append('(D)ouble down')
+
+        move_prompt = ', '.join(moves) + '>'
+        move = input(move_prompt).upper()
+        if move in ('H', 'S'):
+            return move
+        if move == 'D' and '(D)ouble down' in moves:
+            return move
+
+if __name__ == '__main__':
+    main()
+
+
+
+
+
