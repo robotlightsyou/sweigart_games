@@ -27,7 +27,7 @@ REVERSE_ALPHABET = ''.join(sorted(ALPHABET, reverse = True))
 #Read in the words from the word file.
 #This file can be downloaded from
 #https://inventwithpython.com/commonenglishwords.txt
-with open('commonenglishwords.txt') as wordfile:
+with open('utils/commonenglishwords.txt') as wordfile:
     all_words = wordfile.read().splitlines()
 
 def main():

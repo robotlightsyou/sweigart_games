@@ -23,9 +23,7 @@ def main():
                 if letter.isupper():
                     letter = chr(((ord(letter) + cipher - 64) % 26) + 64)
                     encrypted += letter
-                    # encrypted += (((letter + cipher - 64) % 26) + 64)
                 elif letter.islower():
-                    # encrypted += (((letter + cipher - 96) % 26) + 96)
                     letter = chr(((ord(letter) + cipher - 96) % 26) + 96)
                     encrypted += letter
                 else:
