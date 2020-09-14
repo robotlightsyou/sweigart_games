@@ -40,11 +40,114 @@ print(p1Name + ', you have a RED box in front of you.')
 print(p2Name + ', you have a GOLD box in front of you.')
 print()
 print(p1Name + ', you will get to look into your box.')
-print(p2Name.upeer() + ', close your eyes and don\'t look!!!')
-print('When ' + p2Name + ' has closed their eyes, press Enter...')
+print(p2Name.upper() + ', close your eyes and don\'t look!!!')
+input('When ' + p2Name + ' has closed their eyes, press Enter...')
 print()
 
 print(p1Name + ' here is the inside of your box:')
 
+if random.randint(1,2) == 1:
+    carrotInRedBox = True
+else:
+    carrotInRedBox = False
 
+if carrotInRedBox:
+    print('''
+   ___VV____
+  |   VV    |
+  |   VV    |
+  |___||____|    __________
+ /    ||   /|   /         /|
++---------+ |  +---------+ |
+|   RED   | |  |   GOLD  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/
+ (carrot!)''')
+    print(playerNames)
+else:
+    print('''
+   _________
+  |         |
+  |         |
+  |_________|    __________
+ /         /|   /         /|
++---------+ |  +---------+ |
+|   RED   | |  |   GOLD  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/
+(no carrot!)''')
+    print(playerNames)
 
+input('Press Enter to continue...')
+
+print('\n' * 100)
+print(p1Name + ', tell ' + p2Name + ' to open their eyes.')
+input('Press Enter to continue...')
+
+print()
+print(p1Name + ', say one of the following sentences to ' + p2Name + '.')
+print('  1) There is a carrot in my box.')
+print('  2) There is not a carrot in my box.')
+print()
+input('Then press Enter to continue...')
+
+print()
+
+print(p2Name +', do you want to swap boxes with ' + p1Name + '? YES/NO')
+while True:
+    response = input(">").upper()
+    if not (response.startswith('Y') or response.startswith('n')):
+        print(p2Name + ', please enter "YES" or "NO".')
+    else:
+        break
+
+firstBox = 'RED'
+secondBox = 'GOLD'
+
+if response.startswith('Y'):
+    carrotInRedBox = not carrotInRedBox
+    firstBox, secondBox = secondBox, firstBox
+
+print('''HERE ARE THE TWO BOXES:
+  __________     __________
+ /         /|   /         /|
++---------+ |  +---------+ |
+|   {}  | |  |   {}  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/'''.format(firstBox, secondBox))
+print(playerNames)
+
+input('Press Enter to reveal the winner...')
+print()
+
+if carrotInRedBox:
+    print('''
+   ___VV____      _________
+  |   VV    |    |         |
+  |   VV    |    |         |
+  |___||____|    |_________|
+ /    ||   /|   /         /|
++---------+ |  +---------+ |
+|   {}  | |  |   {}  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/'''.format(firstBox, secondBox))
+
+else:
+    print('''
+   _________      ___VV____
+  |         |    |   VV    |
+  |         |    |   VV    |
+  |_________|    |___||____|
+ /         /|   /    ||   /|
++---------+ |  +---------+ |
+|   {}  | |  |   {}  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/'''.format(firstBox, secondBox))
+print(playerNames)
+
+if carrotInRedBox:
+    print(p1Name + ' is the winner!')
+else:
+    print(p2Name + ' is the winner!')
+
+print('Thanks for playing!')
