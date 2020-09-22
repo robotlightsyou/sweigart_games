@@ -2,17 +2,19 @@
 
 '''This program applies a simple caesar shift.'''
 
-import sys
+import sys, exit
 
 def main():
     if len(sys.argv) != 2:
         print("Usage: python caesar.py key")
-        return 1
+        # return 1
+        exit(1)
     else:
         for i in sys.argv[1]:
             if not i.isdigit():
                 print("Usage: python caesar.py key")
-                return 1
+                # return 1
+                exit(1)
         cipher = int(sys.argv[1])
 
         print('plaintext: ',end='')
